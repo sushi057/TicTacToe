@@ -41,6 +41,13 @@ span{
     align-items: center;
 }
 
+.selection{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    text-align: center;
+}
+
 .select-sign{
     display: flex;
     place-content: center;
