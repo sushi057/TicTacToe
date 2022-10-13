@@ -24,7 +24,7 @@ body{
 
 .header{
     /* border: 1px solid; */
-    margin: 48px auto 36px;
+    margin: 28px auto 36px;
     display: flex;
     place-content: center;
     font-size: 28px;
@@ -87,6 +87,11 @@ button:hover{
     width: 144px;
     font-size: 110px;
     max-height:fit-content;
+    cursor: pointer;
+}
+
+.board-section:hover{
+    background-color: #aa977d;
 }
 
 .restart{
