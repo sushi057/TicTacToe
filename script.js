@@ -35,10 +35,7 @@ const boardSection = document.querySelectorAll('.board-section');
 const restartButton = document.querySelector('#restart');
 
 restartButton.addEventListener('click', () => {
-    console.log('muji');
     boardSection.forEach((section) => {
-        console.log('radi');
-        console.log(section.textContent);
         section.textContent = '';
     })
 });
