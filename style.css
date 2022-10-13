@@ -63,20 +63,18 @@ button:hover{
     background-color:bisque;
 }
 
-
-
 .gameboard{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* grid-template-rows: repeat(3, 1fr); */
     gap: 12px;
-    background-color: rgb(131, 11, 11);
+    background-color: var(--primary);
 }
 
 .board-section{
-    /* background-color: inherit; */
-    border: 4px solid   ;
-    padding: 64px;
+    background-color: var(--background);
+    /* border: 4px solid   ; */
+    padding: 72px;
     /* border-radius: 16px; */
 }
 
@@ -89,4 +87,8 @@ footer{
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+
+footer p{
+    letter-spacing: 16px;
 }
