@@ -9,8 +9,7 @@ const gameBoard = (() => {
     restartButton.addEventListener('click', () => {
         boardSection.forEach((section) => {
             section.textContent = "";
-            game.activePlayer = game.playerOne;
-            game.playerTurn.textContent = 'Player One';
+            game.resetPlayer();
             section.style.pointerEvents = null;
         })
     })
@@ -58,21 +57,28 @@ const game = (() => {
         [2, 4, 6]
     ];
 
+    function resetPlayer() {
+        playerTurn.textContent = "Player One";
+        this.activePlayer = playerOne;
+    }
+
     function checkWinner() {
         winningPattern.forEach((item) => {
-            if (boardSection[item[0]] == this.activePlayer.marker && boardSection[item[1]] == this.activePlayer.marker && boardSection[item[2]] == this.activePlayer.marker){
+            console.log('hmm');
+            console.log(item[0]);
+            
+            if (this.boardSection[item[0]] == this.activePlayer.marker && boardSection[item[1]] == this.activePlayer.marker && boardSection[item[2]] == this.activePlayer.marker){
                     console.log('wins');
-                }
-           })
+            }
+        })
     }
 
     return {
-        playerOne,
-        activePlayer,
         currentPlayer,
         winningPattern,
         checkWinner,
-        playerTurn
+        playerTurn,
+        resetPlayer
     }
 })();
 
