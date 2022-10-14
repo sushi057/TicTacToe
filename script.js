@@ -32,7 +32,9 @@ const game = (() => {
     const playerTwo = playerFactor('Player 2', 'O');
     const playerTurn = document.querySelector('#current-player');
     const boardSection = document.querySelectorAll('.board-section');
-    const status = document.querySelector('h2');
+    let status = document.querySelector('h2');
+    const newStatus = status;
+    console.log(status);
 
     let activePlayer = playerOne;
 
@@ -61,6 +63,13 @@ const game = (() => {
     function resetPlayer() {
         playerTurn.textContent = "Player One";
         this.activePlayer = playerOne;
+        status = newStatus;
+    }
+
+    function endGame() {
+        boardSection.forEach((section) => {
+            section.style.pointerEvents = 'none';
+        })
     }
 
     function checkWinner() {
@@ -73,10 +82,12 @@ const game = (() => {
                 if (boardSection[item[2]].textContent == 'X') {
                     console.log("player one wins");
                     status.textContent = 'Player One Wins';
+                    endGame();
                 }
                 else if (boardSection[item[2]].textContent == 'O'){
                     console.log("player two wins");
                     status.textContent = 'Player Two Wins!';
+                    endGame();
                 }
             }
         })
