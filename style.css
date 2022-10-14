@@ -92,17 +92,18 @@ button:hover{
 }
 
 .board-section:hover{
-    background-color: #aa977d;
+    background-color: #c2b39d;
 }
 
 .restart{
-    margin: 48px;
+    margin: 87px auto 24px;
 }
 
 footer{
     position: fixed;
     bottom: 0;
     width: 100%;
+    left: 12px;
     text-align: center;
 }
 
