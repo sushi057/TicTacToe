@@ -46,6 +46,7 @@ span{
     flex-direction: column;
     place-content: center;
     text-align: center;
+    margin: 24px auto 64px;
 }
 
 .select-sign{
