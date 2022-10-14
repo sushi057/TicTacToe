@@ -35,6 +35,10 @@ span{
     color: var(--primary);
 }
 
+#current-player{
+    color: var(--secondary);
+}
+
 .main{
     display: flex;
     flex-direction: column;

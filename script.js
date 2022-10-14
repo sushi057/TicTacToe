@@ -1,9 +1,6 @@
-const playerFactor = (name, points, sign) => {
-    return {name, points, sign}
+const playerFactor = (name, marker) => {
+    return {name, marker}
 }
-
-const player1 = playerFactor('Player 1', 0, '');
-const player2 =playerFactor('Player 2', 0, '');
 
 const gameBoard = (() => {
     const boardSection = document.querySelectorAll('.board-section');
@@ -16,33 +13,35 @@ const gameBoard = (() => {
 
     boardSection.forEach((section) => {
         section.addEventListener('click', () => {
-            section.textContent = player1.sign;
+            section.textContent = game.activePlayer.marker;
+            game.currentPlayer();
         })
     })
 })();
 
 
 const game = (() => {
-    // const xSign = document.querySelector('#x-sign');
-    // const oSign = document.querySelector('#o-sign');
-   
-    // xSign.addEventListener('click', () => {
-    //     xSign.classList.add('selected');
-    //     player1.sign = 'X';
-    //     player2.sign = 'O';
-    //     console.log(player1.sign);
-    //     return player1.sign;
-    // })
+    const playerOne = playerFactor('Player 1', 'X');
+    const playerTwo = playerFactor('Player 2', 'O');
+    const playerTurn = document.querySelector('#current-player');
 
-    // oSign.addEventListener('click', () => {
-    //     oSign.classList.add('selected');
-    //     player1.sign = 'O';
-    //     player2.sign = 'X';
-    //     console.log(player1.sign);
-    //     return player1.sign;
-    // })    
+    let activePlayer = playerOne;
 
+    function currentPlayer() {
+        if (this.activePlayer == playerOne){
+            playerTurn.textContent = 'Player Two';
+            this.activePlayer = playerTwo;
+        }
+        else{
+            playerTurn.textContent = 'Player One';
+            this.activePlayer = playerOne;
+        }
+    }
 
+    return {
+        activePlayer,
+        currentPlayer
+    }
 })();
 
 
