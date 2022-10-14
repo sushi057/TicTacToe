@@ -32,6 +32,7 @@ const game = (() => {
     const playerTwo = playerFactor('Player 2', 'O');
     const playerTurn = document.querySelector('#current-player');
     const boardSection = document.querySelectorAll('.board-section');
+    const status = document.querySelector('h2');
 
     let activePlayer = playerOne;
 
@@ -64,18 +65,27 @@ const game = (() => {
 
     function checkWinner() {
         winningPattern.forEach((item) => {
-            console.log('hmm');
-            console.log(item[0]);
-            
-            if (this.boardSection[item[0]] == this.activePlayer.marker && boardSection[item[1]] == this.activePlayer.marker && boardSection[item[2]] == this.activePlayer.marker){
-                    console.log('wins');
+            // console.log('new line');
+            // console.log(item);
+    
+            if (boardSection[item[0]].textContent === boardSection[item[1]].textContent && boardSection[item[1]].textContent === boardSection[item[2]].textContent && boardSection[item[2]].textContent ){
+                console.log('randi ko ban nai raicha');
+                if (boardSection[item[2]].textContent == 'X') {
+                    console.log("player one wins");
+                    status.textContent = 'Player One Wins';
+                }
+                else if (boardSection[item[2]].textContent == 'O'){
+                    console.log("player two wins");
+                    status.textContent = 'Player Two Wins!';
+                }
             }
         })
     }
 
     return {
+        activePlayer,
         currentPlayer,
-        winningPattern,
+        // winningPattern,
         checkWinner,
         playerTurn,
         resetPlayer
