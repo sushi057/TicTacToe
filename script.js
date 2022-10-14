@@ -9,6 +9,9 @@ const gameBoard = (() => {
     restartButton.addEventListener('click', () => {
         boardSection.forEach((section) => {
             section.textContent = "";
+            game.activePlayer = game.playerOne;
+            game.playerTurn.textContent = 'Player One';
+            section.style.pointerEvents = null;
         })
     })
 
@@ -58,16 +61,18 @@ const game = (() => {
     function checkWinner() {
         winningPattern.forEach((item) => {
             if (boardSection[item[0]] == this.activePlayer.marker && boardSection[item[1]] == this.activePlayer.marker && boardSection[item[2]] == this.activePlayer.marker){
-                    console.log('randi ko ban');
+                    console.log('wins');
                 }
            })
     }
 
     return {
+        playerOne,
         activePlayer,
         currentPlayer,
         winningPattern,
-        checkWinner
+        checkWinner,
+        playerTurn
     }
 })();
 
