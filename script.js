@@ -61,9 +61,9 @@ const game = (() => {
     ];
 
     function resetPlayer() {
-        playerTurn.textContent = "Player One";
+        status.innerHTML = "<span>Player One</span>, your turn.";
         this.activePlayer = playerOne;
-        status = newStatus;
+      
     }
 
     function endGame() {
@@ -81,12 +81,12 @@ const game = (() => {
                 console.log('randi ko ban nai raicha');
                 if (boardSection[item[2]].textContent == 'X') {
                     console.log("player one wins");
-                    status.textContent = 'Player One Wins';
+                    status.innerHTML = '<span>Player One</span> Wins';
                     endGame();
                 }
                 else if (boardSection[item[2]].textContent == 'O'){
                     console.log("player two wins");
-                    status.textContent = 'Player Two Wins!';
+                    status.innerHTML = '<span>Player Two</span> Wins!';
                     endGame();
                 }
             }
