@@ -8,9 +8,7 @@ const gameBoard = (() => {
 
     restartButton.addEventListener('click', () => {
         boardSection.forEach((section) => {
-            section.textContent = "";
-            game.resetPlayer();
-            section.style.pointerEvents = null;
+            window.location.reload();
         })
     })
 
@@ -30,24 +28,11 @@ const gameBoard = (() => {
 const game = (() => {
     const playerOne = playerFactor('Player 1', 'X');
     const playerTwo = playerFactor('Player 2', 'O');
-    const playerTurn = document.querySelector('#current-player');
+    const playerTurn = document.querySelector('#current');
     const boardSection = document.querySelectorAll('.board-section');
-    let status = document.querySelector('h2');
-    const newStatus = status;
-    console.log(status);
+    const status = document.querySelector('h2');
 
     let activePlayer = playerOne;
-
-    function currentPlayer() {
-        if (this.activePlayer == playerOne){
-            playerTurn.textContent = 'Player Two';
-            this.activePlayer = playerTwo;
-        }
-        else{
-            playerTurn.textContent = 'Player One';
-            this.activePlayer = playerOne;
-        }
-    }
 
     const winningPattern = [
         [0, 1, 2],
@@ -60,10 +45,16 @@ const game = (() => {
         [2, 4, 6]
     ];
 
-    function resetPlayer() {
-        status.innerHTML = "<span>Player One</span>, your turn.";
-        this.activePlayer = playerOne;
-      
+    function currentPlayer() {
+        console.log('check');
+        if (this.activePlayer == playerOne){
+            playerTurn.textContent = "Player Two";
+            this.activePlayer = playerTwo;
+        }
+        else{
+            playerTurn.textContent = 'Player One';
+            this.activePlayer = playerOne;
+        }
     }
 
     function endGame() {
@@ -73,20 +64,23 @@ const game = (() => {
     }
 
     function checkWinner() {
+
+        if (boardSection.forEach((section) => {
+            section.textContent !== '';
+            })) {
+            console.log('k');
+            status.textContent = "TIE!";
+        }
         winningPattern.forEach((item) => {
-            // console.log('new line');
-            // console.log(item);
-    
             if (boardSection[item[0]].textContent === boardSection[item[1]].textContent && boardSection[item[1]].textContent === boardSection[item[2]].textContent && boardSection[item[2]].textContent ){
-                console.log('randi ko ban nai raicha');
                 if (boardSection[item[2]].textContent == 'X') {
                     console.log("player one wins");
-                    status.innerHTML = '<span>Player One</span> Wins';
+                    status.innerHTML = '<span id="current">Player One</span> Wins';
                     endGame();
                 }
                 else if (boardSection[item[2]].textContent == 'O'){
                     console.log("player two wins");
-                    status.innerHTML = '<span>Player Two</span> Wins!';
+                    status.innerHTML = '<span id="current">Player Two</span> Wins!';
                     endGame();
                 }
             }
@@ -96,10 +90,8 @@ const game = (() => {
     return {
         activePlayer,
         currentPlayer,
-        // winningPattern,
         checkWinner,
         playerTurn,
-        resetPlayer
     }
 })();
 

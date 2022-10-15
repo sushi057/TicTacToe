@@ -31,11 +31,11 @@ body{
     /* color: var(--primary); */
 }
 
-span{
+#tac{
     color: var(--primary);
 }
 
-#current-player{
+#current{
     color: var(--secondary);
 }
 
