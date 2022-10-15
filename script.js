@@ -17,6 +17,7 @@ const gameBoard = (() => {
             section.textContent = game.activePlayer.marker;
             section.style.pointerEvents = "none";
             game.currentPlayer();
+            game.checkTie();
             game.checkWinner();
         })
     })
@@ -63,14 +64,28 @@ const game = (() => {
         })
     }
 
+    function checkTie(){
+        full = 0;
+        for(let i=0; i<boardSection.length ; i++){
+            if (boardSection[i].textContent != ''){
+                full++;
+                console.log('empty');
+            }
+        }
+        if (full == boardSection.length){
+            status.textContent = "TIE!";
+            console.log("tie");
+        }
+    }
+
     function checkWinner() {
 
-        if (boardSection.forEach((section) => {
-            section.textContent !== '';
-            })) {
-            console.log('k');
-            status.textContent = "TIE!";
-        }
+        // if (boardSection.forEach((section) => {
+        //     section.textContent !== '';
+        //     })) {
+        //     console.log('k');
+        //     status.textContent = "TIE!";
+        // }
         winningPattern.forEach((item) => {
             if (boardSection[item[0]].textContent === boardSection[item[1]].textContent && boardSection[item[1]].textContent === boardSection[item[2]].textContent && boardSection[item[2]].textContent ){
                 if (boardSection[item[2]].textContent == 'X') {
@@ -92,6 +107,7 @@ const game = (() => {
         currentPlayer,
         checkWinner,
         playerTurn,
+        checkTie
     }
 })();
 
